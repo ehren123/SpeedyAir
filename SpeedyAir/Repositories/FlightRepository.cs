@@ -2,9 +2,8 @@
 
 public class FlightRepository
 {
-    public List<Flight> GetFlights()
-    {
-        return new List<Flight>
+    public List<Flight> GetFlights() =>
+        new()
         {
             new Flight(1, 1, "YUL", "YYZ"),
             new Flight(2, 1, "YUL", "YYC"),
@@ -13,5 +12,4 @@ public class FlightRepository
             new Flight(5, 2, "YUL", "YYC"),
             new Flight(6, 2, "YUL", "YVR"),
         };
-    }
 }

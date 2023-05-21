@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SpeedyAir.Repositories;
+using SpeedyAir.Services;
 
 using var host = CreateHostBuilder(args).Build();
 
@@ -16,6 +17,7 @@ IHostBuilder CreateHostBuilder(string[] strings)
             services.AddSingleton<App>();
             services.AddTransient<FlightRepository>();
             services.AddTransient<OrderRepository>();
+            services.AddTransient<ShippingService>();
         });
 }
 
