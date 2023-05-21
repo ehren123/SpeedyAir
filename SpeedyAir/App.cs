@@ -17,13 +17,10 @@ public class App
     {
         var schedule = _shippingService.GetFlightSchedule();
         Console.WriteLine(schedule);
-        // var orders = _orderRepository.GetOrders();
-        //
-        // var json = JsonConvert.SerializeObject(orders);
-        //
-        // Console.WriteLine(json);
         
-        //Console.WriteLine("Hello World!");
+        var orderItineraries = _shippingService.GetOrderItineraries();
+        Console.WriteLine(orderItineraries);
+
         Console.ReadKey();
     }
 }

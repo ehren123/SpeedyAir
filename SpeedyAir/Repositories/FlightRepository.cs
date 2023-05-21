@@ -1,15 +1,58 @@
-﻿namespace SpeedyAir.Repositories;
+﻿using SpeedyAir.Entities;
+
+namespace SpeedyAir.Repositories;
 
 public class FlightRepository
 {
     public List<Flight> GetFlights() =>
         new()
         {
-            new Flight(1, 1, "YUL", "YYZ"),
-            new Flight(2, 1, "YUL", "YYC"),
-            new Flight(3, 1, "YUL", "YVR"),
-            new Flight(4, 2, "YUL", "YYZ"),
-            new Flight(5, 2, "YUL", "YYC"),
-            new Flight(6, 2, "YUL", "YVR"),
+            new Flight
+            {
+                Id = 1, Day = 1,
+                Departure = "YUL",
+                Arrival = "YYZ",
+                Orders = new List<Order>(20)
+            },
+            new Flight
+            {
+                Id = 2,
+                Day = 1, 
+                Departure = "YUL", 
+                Arrival = "YYC", 
+                Orders = new List<Order>(20)
+            },
+            new Flight
+            {
+                Id = 3,
+                Day = 1, 
+                Departure = "YUL", 
+                Arrival = "YVR", 
+                Orders = new List<Order>(20)
+            },
+            new Flight
+            {
+                Id = 4,
+                Day = 2, 
+                Departure = "YUL", 
+                Arrival = "YYZ", 
+                Orders = new List<Order>(20)
+            },
+            new Flight
+            {
+                Id = 5,
+                Day = 2, 
+                Departure = "YUL", 
+                Arrival = "YYC", 
+                Orders = new List<Order>(20)
+            },
+            new Flight
+            {
+                Id = 6,
+                Day = 2, 
+                Departure = "YUL", 
+                Arrival = "YVR", 
+                Orders = new List<Order>(20)
+            },
         };
 }

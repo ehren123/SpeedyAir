@@ -8,7 +8,7 @@ public class OrderRepository
 {
     private readonly string _ordersJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,@"Data/coding-assigment-orders.json");
     
-    public IList<Order> GetOrders()
+    public List<Order> GetOrders()
     {
         var ordersJson = File.ReadAllText(_ordersJsonPath);
         var ordersJObject = JObject.Parse(ordersJson);
@@ -20,10 +20,17 @@ public class OrderRepository
             {
                 throw new NullReferenceException();
             }
+
+            var orderToAdd = new Order
+            {
+                Id = orderJObject.Key,
+                Origin = "YUL",
+                Destination = (string)orderJObject.Value["destination"]!
+            };
             
-            orders.Add(new Order(orderJObject.Key, "YUL",((string)orderJObject.Value["destination"]!)));
+            orders.Add(orderToAdd);
         }
         
-        return orders;
+        return orders.OrderBy(o => o.Id).ToList();
     }
 }
