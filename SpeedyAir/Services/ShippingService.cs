@@ -40,17 +40,9 @@ public class ShippingService : IShippingService
 
         foreach (var order in orders)
         {
-            string line;
-            
-            if (order.Flight == null)
-            {
-                line = $"order: {order.Id}, flightNumber: not scheduled{Environment.NewLine}";
-            }
-            else
-            {
-                line =
-                    $"order: {order.Id}, flightNumber: {order.Flight.Id}, departure: {order.Flight.Departure}, arrival: {order.Flight.Arrival}, day: {order.Flight.Day}{Environment.NewLine}";
-            }
+            var line = order.Flight == null 
+                ? $"order: {order.Id}, flightNumber: not scheduled{Environment.NewLine}" 
+                : $"order: {order.Id}, flightNumber: {order.Flight.Id}, departure: {order.Flight.Departure}, arrival: {order.Flight.Arrival}, day: {order.Flight.Day}{Environment.NewLine}";
 
             sb.Append(line);
         }
