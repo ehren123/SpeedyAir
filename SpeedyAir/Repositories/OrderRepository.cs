@@ -4,7 +4,7 @@ using SpeedyAir.Entities;
 
 namespace SpeedyAir.Repositories;
 
-public class OrderRepository
+public class OrderRepository : IOrderRepository
 {
     private readonly string _ordersJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,@"Data/coding-assigment-orders.json");
     

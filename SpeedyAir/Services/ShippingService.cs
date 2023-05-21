@@ -4,13 +4,13 @@ using SpeedyAir.Repositories;
 
 namespace SpeedyAir.Services;
 
-public class ShippingService
+public class ShippingService : IShippingService
 {
-    private readonly FlightRepository _flightRepository;
+    private readonly IFlightRepository _flightRepository;
     
-    private readonly OrderRepository _orderRepository;
+    private readonly IOrderRepository _orderRepository;
     
-    public ShippingService(FlightRepository flightRepository, OrderRepository orderRepository)
+    public ShippingService(IFlightRepository flightRepository, IOrderRepository orderRepository)
     {
         _flightRepository = flightRepository;
         _orderRepository = orderRepository;

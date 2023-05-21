@@ -1,15 +1,12 @@
-﻿using Newtonsoft.Json;
-using SpeedyAir.Repositories;
-using SpeedyAir.Services;
+﻿using SpeedyAir.Services;
+
+namespace SpeedyAir;
 
 public class App
 {
-    private readonly OrderRepository _orderRepository;
-
-    private readonly ShippingService _shippingService;
-    public App(OrderRepository  orderRepository, ShippingService shippingService)
+    private readonly IShippingService _shippingService;
+    public App(IShippingService shippingService)
     {
-        _orderRepository = orderRepository;
         _shippingService = shippingService;
     }
 

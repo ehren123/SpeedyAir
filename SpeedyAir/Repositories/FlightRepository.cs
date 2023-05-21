@@ -2,14 +2,15 @@
 
 namespace SpeedyAir.Repositories;
 
-public class FlightRepository
+public class FlightRepository : IFlightRepository
 {
     public List<Flight> GetFlights() =>
         new()
         {
             new Flight
             {
-                Id = 1, Day = 1,
+                Id = 1, 
+                Day = 1,
                 Departure = "YUL",
                 Arrival = "YYZ",
                 Orders = new List<Order>(20)
