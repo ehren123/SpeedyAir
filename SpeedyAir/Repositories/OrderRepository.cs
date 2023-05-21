@@ -16,7 +16,12 @@ public class OrderRepository
         var orders = new List<Order>();
         foreach(var orderJObject in ordersJObject)
         {
-            orders.Add(new Order(orderJObject.Key, "YUL",((string)orderJObject.Value!["destination"])!));
+            if ((string?)orderJObject.Value?["destination"] == null)
+            {
+                throw new NullReferenceException();
+            }
+            
+            orders.Add(new Order(orderJObject.Key, "YUL",((string)orderJObject.Value["destination"]!)));
         }
         
         return orders;
