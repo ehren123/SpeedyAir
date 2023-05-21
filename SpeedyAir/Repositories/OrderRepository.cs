@@ -16,7 +16,7 @@ public class OrderRepository
         var orders = new List<Order>();
         foreach(var orderJObject in ordersJObject)
         {
-            orders.Add(new Order(orderJObject.Key, (string)orderJObject.Value["destination"]));
+            orders.Add(new Order(orderJObject.Key, "YUL",((string)orderJObject.Value!["destination"])!));
         }
         
         return orders;

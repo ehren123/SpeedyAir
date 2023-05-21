@@ -14,6 +14,7 @@ IHostBuilder CreateHostBuilder(string[] strings)
         .ConfigureServices((_, services) =>
         {
             services.AddSingleton<App>();
+            services.AddTransient<FlightRepository>();
             services.AddTransient<OrderRepository>();
         });
 }
