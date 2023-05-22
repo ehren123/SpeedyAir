@@ -13,7 +13,7 @@ var services = scope.ServiceProvider;
 IHostBuilder CreateHostBuilder(string[] strings)
 {
     return Host.CreateDefaultBuilder()
-        .ConfigureServices((_, s) =>
+        .ConfigureServices(s =>
         {
             s.AddSingleton<App>();
             s.AddTransient<IFlightRepository, FlightRepository>();
