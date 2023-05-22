@@ -34,7 +34,7 @@ public class ShippingService : IShippingService
     
     public string GetOrderItineraries()
     {
-        var orders = GetOrdersWithFlights();
+        var orders = GetOrdersWithFlight();
         
         var sb = new StringBuilder();
 
@@ -50,7 +50,7 @@ public class ShippingService : IShippingService
         return sb.ToString();
     }
 
-    private List<Order> GetOrdersWithFlights()
+    private List<Order> GetOrdersWithFlight()
     {
         var flights = _flightRepository.GetFlights()
             .ToLookup(f => (f.Departure, f.Arrival));
