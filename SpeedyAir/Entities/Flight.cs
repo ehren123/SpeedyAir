@@ -10,7 +10,7 @@ public class Flight
 
     public string Arrival { get; init; } = string.Empty;
 
-    public List<Order> Orders { get; set; } = new List<Order>(20);
+    public List<Order> Orders { get; init; } = new List<Order>(20);
     
     public bool IsFull => Orders.Count >= Orders.Capacity;
 }
