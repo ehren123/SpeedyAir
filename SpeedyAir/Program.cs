@@ -22,4 +22,4 @@ IHostBuilder CreateHostBuilder(string[] strings)
         });
 }
 
-services.GetRequiredService<App>().Run(args);
+return services.GetRequiredService<App>().Run(args);

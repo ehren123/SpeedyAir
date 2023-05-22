@@ -10,7 +10,7 @@ public class App
         _shippingService = shippingService;
     }
 
-    public void Run(string[] args)
+    public int Run(string[] args)
     {
         var schedule = _shippingService.GetFlightSchedule();
         Console.WriteLine(schedule);
@@ -19,5 +19,7 @@ public class App
         Console.WriteLine(orderItineraries);
 
         Console.ReadKey();
+
+        return 0;
     }
 }
