@@ -1,4 +1,4 @@
-﻿using SpeedyAir.Entities;
+﻿namespace SpeedyAir.Entities;
 
 public class Flight
 {

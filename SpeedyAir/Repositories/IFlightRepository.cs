@@ -1,4 +1,6 @@
-﻿namespace SpeedyAir.Repositories;
+﻿using SpeedyAir.Entities;
+
+namespace SpeedyAir.Repositories;
 
 public interface IFlightRepository
 {
