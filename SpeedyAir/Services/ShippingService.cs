@@ -52,17 +52,16 @@ public class ShippingService : IShippingService
 
     private List<Order> GetOrdersWithFlights()
     {
-        var flights = _flightRepository.GetFlights();
+        var flights = _flightRepository.GetFlights()
+            .ToLookup(f => (f.Departure, f.Arrival));
         var orders = _orderRepository.GetOrders();
 
         foreach (var order in orders)
         {
             var flight = flights
+                [(order.Origin, order.Destination)]
                 .OrderBy(f => f.Day)
-                .FirstOrDefault(f =>
-                    f.Orders.Count < f.Orders.Capacity // Check if flight is full
-                    && f.Departure == order.Origin 
-                    && f.Arrival == order.Destination);
+                .FirstOrDefault(f => !f.IsFull);
 
             // No available flight found.
             if (flight == null)
