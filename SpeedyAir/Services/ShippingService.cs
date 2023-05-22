@@ -58,8 +58,7 @@ public class ShippingService : IShippingService
 
         foreach (var order in orders)
         {
-            var flight = flights
-                [(order.Origin, order.Destination)]
+            var flight = flights[(order.Origin, order.Destination)]
                 .OrderBy(f => f.Day)
                 .FirstOrDefault(f => !f.IsFull);
 
