@@ -5,6 +5,7 @@ namespace SpeedyAir;
 public class App
 {
     private readonly IShippingService _shippingService;
+    
     public App(IShippingService shippingService)
     {
         _shippingService = shippingService;
