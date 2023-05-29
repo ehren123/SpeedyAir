@@ -75,12 +75,9 @@ public class ShippingService : IShippingService
 
     private List<Flight?> GetFlightsWithOrders()
     {
-        var orders = GetOrdersWithFlight().Where(o => o.Flight != null);
-
-        var flightGroups = orders.GroupBy(o => o.Flight);
-        
-        return flightGroups
-            .Select(fg => fg.Key)
+        return GetOrdersWithFlight().Where(o => o.Flight != null)
+            .GroupBy(o => o.Flight)
+            .Select(g => g.Key)
             .ToList();
     }
 
