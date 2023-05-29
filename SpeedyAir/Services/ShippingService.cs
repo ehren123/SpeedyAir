@@ -50,6 +50,40 @@ public class ShippingService : IShippingService
         return sb.ToString();
     }
 
+    public void GetFlightsWithOrdersById(long id)
+    {
+        var flights = GetFlightsWithOrders();
+        var flight = flights.SingleOrDefault(f => f.Id == id);
+        
+        if (flight == null)
+        {
+            Console.WriteLine($"Flight {id} not found.");
+        }
+
+        var sb = new StringBuilder();
+        
+        sb.Append($"Flight: {flight.Id}, departure: {flight.Departure}, arrival: {flight.Arrival}, day: {flight.Day}{Environment.NewLine}");
+        
+        foreach (var order in flight.Orders)
+        {
+            var line = $"order: {order.Id}, flightNumber: {order.Flight?.Id}, departure: {order.Flight?.Departure}, arrival: {order.Flight?.Arrival}, day: {order.Flight?.Day}{Environment.NewLine}";
+            sb.Append(line);
+        }
+        
+        Console.WriteLine(sb.ToString());
+    }
+
+    private List<Flight?> GetFlightsWithOrders()
+    {
+        var orders = GetOrdersWithFlight().Where(o => o.Flight != null);
+
+        var flightGroups = orders.GroupBy(o => o.Flight);
+        
+        return flightGroups
+            .Select(fg => fg.Key)
+            .ToList();
+    }
+
     private List<Order> GetOrdersWithFlight()
     {
         var flights = _flightRepository.GetFlights()

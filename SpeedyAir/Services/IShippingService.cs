@@ -5,4 +5,6 @@ public interface IShippingService
     string GetFlightSchedule();
 
     string GetOrderItineraries();
+
+    void GetFlightsWithOrdersById(long id);
 }
