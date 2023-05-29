@@ -1,4 +1,6 @@
-﻿namespace SpeedyAir.Entities;
+﻿using System.Diagnostics;
+
+namespace SpeedyAir.Entities;
 
 public class Order
 {
@@ -9,4 +11,6 @@ public class Order
     public string Destination { get; init; } = string.Empty;
     
     public Flight? Flight { get; set; }
+    
+    public Guarantee Guarantee { get; init; }
 }

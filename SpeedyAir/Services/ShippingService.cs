@@ -42,7 +42,7 @@ public class ShippingService : IShippingService
         {
             var line = order.Flight == null 
                 ? $"order: {order.Id}, flightNumber: not scheduled{Environment.NewLine}" 
-                : $"order: {order.Id}, flightNumber: {order.Flight.Id}, departure: {order.Flight.Departure}, arrival: {order.Flight.Arrival}, day: {order.Flight.Day}{Environment.NewLine}";
+                : $"order: {order.Id}, flightNumber: {order.Flight.Id}, departure: {order.Flight.Departure}, arrival: {order.Flight.Arrival}, day: {order.Flight.Day}, service: {order.Guarantee.ToString()}{Environment.NewLine}";
 
             sb.Append(line);
         }
@@ -50,14 +50,14 @@ public class ShippingService : IShippingService
         return sb.ToString();
     }
 
-    public void GetFlightsWithOrdersById(long id)
+    public string GetFlightsWithOrdersById(long id)
     {
         var flights = GetFlightsWithOrders();
         var flight = flights.SingleOrDefault(f => f.Id == id);
         
         if (flight == null)
         {
-            Console.WriteLine($"Flight {id} not found.");
+            return $"Flight {id} not found.";
         }
 
         var sb = new StringBuilder();
@@ -70,7 +70,7 @@ public class ShippingService : IShippingService
             sb.Append(line);
         }
         
-        Console.WriteLine(sb.ToString());
+        return sb.ToString();
     }
 
     private List<Flight?> GetFlightsWithOrders()

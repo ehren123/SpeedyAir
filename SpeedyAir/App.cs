@@ -13,13 +13,15 @@ public class App
 
     public int Run(string[] args)
     {
-        // var schedule = _shippingService.GetFlightSchedule();
-        // Console.WriteLine(schedule);
-        //
-        // var orderItineraries = _shippingService.GetOrderItineraries();
-        // Console.WriteLine(orderItineraries);
+        var schedule = _shippingService.GetFlightSchedule();
+        Console.WriteLine(schedule);
         
-        _shippingService.GetFlightsWithOrdersById(3);
+        var orderItineraries = _shippingService.GetOrderItineraries();
+        Console.WriteLine(orderItineraries);
+        
+        var flightThree = _shippingService.GetFlightsWithOrdersById(3);
+        
+        Console.WriteLine(flightThree);
 
         Console.ReadKey();
 

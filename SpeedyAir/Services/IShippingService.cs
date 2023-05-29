@@ -6,5 +6,5 @@ public interface IShippingService
 
     string GetOrderItineraries();
 
-    void GetFlightsWithOrdersById(long id);
+    string GetFlightsWithOrdersById(long id);
 }

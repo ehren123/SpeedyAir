@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Diagnostics;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SpeedyAir.Entities;
 
@@ -16,7 +17,7 @@ public class OrderRepository : IOrderRepository
         var orders = new List<Order>();
         foreach(var orderJObject in ordersJObject)
         {
-            if ((string?)orderJObject.Value?["destination"] == null)
+            if ((string?)orderJObject.Value?["destination"] == null || (string?)orderJObject.Value?["service"] == null)
             {
                 throw new NullReferenceException();
             }
@@ -25,12 +26,21 @@ public class OrderRepository : IOrderRepository
             {
                 Id = orderJObject.Key,
                 Origin = "YUL",
-                Destination = (string)orderJObject.Value["destination"]!
+                Destination = (string)orderJObject.Value["destination"]!,
+                Guarantee =  (string)orderJObject.Value["service"]! switch
+                {
+                    "same-day" => Guarantee.SameDay,
+                    "next-day" => Guarantee.NextDay,
+                    _ => Guarantee.Regular
+                }
             };
-            
+
             orders.Add(orderToAdd);
         }
-        
-        return orders.OrderBy(o => o.Id).ToList();
+
+        return orders
+            .OrderBy(o => (int)o.Guarantee)
+            .ThenBy(o => o.Id)
+            .ToList();
     }
 }
