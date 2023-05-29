@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using SpeedyAir.Entities;
 
 namespace SpeedyAir.Repositories;
