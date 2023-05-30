@@ -20,7 +20,6 @@ public class App
         Console.WriteLine(orderItineraries);
         
         var flightThree = _shippingService.GetFlightsWithOrdersById(3);
-        
         Console.WriteLine(flightThree);
 
         Console.ReadKey();
