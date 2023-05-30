@@ -53,7 +53,7 @@ public class ShippingService : IShippingService
     public string GetFlightsWithOrdersById(long id)
     {
         var flights = GetFlightsWithOrders();
-        var flight = flights.SingleOrDefault(f => f.Id == id);
+        var flight = flights.SingleOrDefault(f => f != null && f.Id == id);
         
         if (flight == null)
         {
